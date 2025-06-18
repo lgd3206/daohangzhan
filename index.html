@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>安全生产导航站</title>
+  <style>
+    body {
+      font-family: "微软雅黑", Arial, sans-serif;
+      background: #f4f6fa;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #1976d2;
+      color: #fff;
+      padding: 32px 0 16px 0;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      letter-spacing: 2px;
+    }
+    header p {
+      margin: 8px 0 0 0;
+      font-size: 1.1em;
+      color: #e3eafc;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 32px auto;
+      padding: 0 16px;
+    }
+    .search-box {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .search-box input {
+      width: 320px;
+      max-width: 90%;
+      padding: 10px 16px;
+      border: 1px solid #b0bec5;
+      border-radius: 24px;
+      font-size: 1em;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .nav-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+    }
+    .nav-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      padding: 24px 20px 16px 20px;
+      width: 320px;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 16px;
+      transition: box-shadow 0.2s;
+    }
+    .nav-card:hover {
+      box-shadow: 0 4px 16px rgba(25, 118, 210, 0.15);
+    }
+    .nav-card h2 {
+      font-size: 1.2em;
+      color: #1976d2;
+      margin: 0 0 12px 0;
+      border-left: 4px solid #1976d2;
+      padding-left: 8px;
+      font-weight: bold;
+    }
+    .nav-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .nav-card li {
+      margin-bottom: 10px;
+    }
+    .nav-card a {
+      color: #333;
+      text-decoration: none;
+      font-size: 1em;
+      transition: color 0.2s;
+    }
+    .nav-card a:hover {
+      color: #1976d2;
+      text-decoration: underline;
+    }
+    @media (max-width: 900px) {
+      .nav-card { width: 100%; }
+      .nav-grid { flex-direction: column; align-items: center; }
+    }
+  </style>
+  <script>
+    function searchLinks() {
+      var input = document.getElementById('searchInput').value.toLowerCase();
+      var cards = document.getElementsByClassName('nav-card');
+      for (var i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        var links = card.getElementsByTagName('a');
+        var found = false;
+        for (var j = 0; j < links.length; j++) {
+          if (links[j].innerText.toLowerCase().indexOf(input) !== -1) {
+            found = true;
+            break;
+          }
+        }
+        card.style.display = found || input === "" ? "flex" : "none";
+      }
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>安全生产导航站</h1>
+    <p>聚合权威资源 · 实用工具 · 最新资讯 · 一站式服务</p>
+  </header>
+  <div class="container">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="搜索你想要的资源..." onkeyup="searchLinks()">
+    </div>
+    <div class="nav-grid">
+      <div class="nav-card">
+        <h2>权威资讯</h2>
+        <ul>
+          <li><a href="https://www.mem.gov.cn/" target="_blank">应急管理部官网</a></li>
+          <li><a href="http://www.chinasafety.gov.cn/" target="_blank">国家安全生产监督管理局</a></li>
+          <li><a href="http://www.aqsc.cn/" target="_blank">中国安全生产网</a></li>
+          <li><a href="https://www.sohu.com/c/8/1460" target="_blank">搜狐安全频道</a></li>
+        </ul>
+      </div>
+      <div class="nav-card">
+        <h2>政策法规</h2>
+        <ul>
+          <li><a href="https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/flfg/" target="_blank">安全生产法律法规</a></li>
+          <li><a href="https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/bmgz/" target="_blank">部门规章</a></li>
+          <li><a href="https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/zcjd/" target="_blank">政策解读</a></li>
+        </ul>
+      </div>
+      <div class="nav-card">
+        <h2>学习培训</h2>
+        <ul>
+          <li><a href="https://www.icourse163.org/" target="_blank">中国大学MOOC</a></li>
+          <li><a href="https://study.163.com/" target="_blank">网易云课堂</a></li>
+          <li><a href="https://www.safetyedu.com/" target="_blank">安全生产教育网</a></li>
+          <li><a href="https://www.xuetangx.com/" target="_blank">学堂在线</a></li>
+        </ul>
+      </div>
+      <div class="nav-card">
+        <h2>实用工具</h2>
+        <ul>
+          <li><a href="https://www.mem.gov.cn/yjgl/yjya/" target="_blank">应急预案模板</a></li>
+          <li><a href="https://www.aqsc.cn/tools/" target="_blank">隐患排查表下载</a></li>
+          <li><a href="https://www.mem.gov.cn/yjgl/yjya/" target="_blank">风险评估工具</a></li>
+          <li><a href="https://www.aqsc.cn/bz/" target="_blank">安全标志下载</a></li>
+        </ul>
+      </div>
+      <div class="nav-card">
+        <h2>事故案例</h2>
+        <ul>
+          <li><a href="https://www.mem.gov.cn/yjgl/sgcc/" target="_blank">典型事故分析</a></li>
+          <li><a href="https://www.aqsc.cn/case/" target="_blank">事故案例库</a></li>
+          <li><a href="https://www.bilibili.com/video/BV1hJ411n7kN" target="_blank">事故警示视频</a></li>
+        </ul>
+      </div>
+      <div class="nav-card">
+        <h2>社区交流</h2>
+        <ul>
+          <li><a href="https://www.zhihu.com/topic/20766580/hot" target="_blank">知乎安全生产话题</a></li>
+          <li><a href="https://bbs.mem.gov.cn/" target="_blank">应急管理部论坛</a></li>
+          <li><a href="https://www.aqsc.cn/bbs/" target="_blank">安全生产论坛</a></li>
+        </ul>
+      </div>
+      <div class="nav-card">
+        <h2>便捷入口</h2>
+        <ul>
+          <li><a href="https://www.mem.gov.cn/yjgl/yjya/" target="_blank">应急管理APP下载</a></li>
+          <li><a href="https://weixin.sogou.com/weixin?type=1&s_from=input&query=安全生产" target="_blank">安全生产公众号</a></li>
+          <li><a href="https://www.aqsc.cn/meeting/" target="_blank">行业大会信息</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
